@@ -1,36 +1,27 @@
-# Initialize inventory and failed entries
-inventory = 0
-failed_entries = 0
-
-while True:
+def get_valid_input():
     stock = input("Enter stock quantity (or 'quit' to exit): ")
 
-    # Exit condition
     if stock.lower() == "quit":
-        print("Total Units Processed:", inventory)
-        print("Number of Failed/Rejected Entries:", failed_entries)
-        break
+        return "quit"
 
-    # Check if input is a valid integer
+    # Check for negative whole numbers before the general digit check
+    if stock.startswith("-") and stock[1:].isdigit():
+        raise ValueError("Negative stock quantities are not allowed.")
+
     if not stock.isdigit():
-        print("Error: Please enter a valid integer.")
-        failed_entries += 1
-        continue
+        raise ValueError("Please enter a valid integer.")
 
-    stock = int(stock)
+    return int(stock)
 
-    # Reject negative numbers
-    if stock < 0:
-        print("Error: Negative stock quantities are not allowed.")
-        failed_entries += 1
-        continue
 
-    # Add valid stock to inventory
-    inventory += stock
+def process_delivery(current_total, new_value):
+    return current_total + new_value
 
-    # Overstock alert
-    if inventory > 500:
-        print("ALERT: Overstock! Inventory exceeds 500 units.")
-        break
 
-    print("Current inventory:", inventory)
+def calculate_tax(amount):
+    return amount * 0.10
+
+
+def generate_report(total_units, failed_attempts):
+    print("Total Units Processed:", total_units)
+    print("Number of Failed/Rejected Entries:", failed_attempts)
