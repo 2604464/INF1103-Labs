@@ -36,6 +36,16 @@ def generate_report(total_units, failed_attempts):
     print(f"Total Units Processed: {total_units}")
     print(f"Number of Failed/Rejected Entries: {failed_attempts}")
 
+def save_inventory(total, history):
+    data = {
+        "total": total,
+        "history": history
+    }
+
+    with open("inventory.txt", "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4)
+
+    print("Inventory saved to inventory.txt")
 
 def main():
     inventory, history = load_inventory()
@@ -70,6 +80,7 @@ def main():
     print(f"Total Deliveries Processed (this run): {deliveries}")
     generate_report(inventory, failed_attempts)
     print(f"Transaction history: {history}")
+    save_inventory(inventory, history)
 
 
 if __name__ == "__main__":
