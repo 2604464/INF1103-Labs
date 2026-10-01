@@ -43,6 +43,7 @@ def main():
     deliveries = 0
 
     print(f"Loaded inventory: {inventory}")
+    print(f"Loaded history: {history}")
 
     while True:
         if inventory > 500:
@@ -60,6 +61,7 @@ def main():
             break
 
         inventory = process_delivery(inventory, quantity)
+        history.append(quantity)
         deliveries += 1
 
         print(f"Tax for this delivery: {calculate_tax(quantity):.2f}")
@@ -67,6 +69,7 @@ def main():
 
     print(f"Total Deliveries Processed (this run): {deliveries}")
     generate_report(inventory, failed_attempts)
+    print(f"Transaction history: {history}")
 
 
 if __name__ == "__main__":
