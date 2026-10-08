@@ -1,37 +1,42 @@
-# Phase 1: Each product is a dictionary. The inventory is a list.
-inventory = [
-    {
-        "id": "P001",
-        "name": "Laptop",
-        "price": 1200.0,
-        "stock": 15,
-        "transactions": [15]
-    },
-    {
-        "id": "P002",
-        "name": "Mouse",
-        "price": 25.5,
-        "stock": 40,
-        "transactions": [40]
-    },
-    {
-        "id": "P003",
-        "name": "Keyboard",
-        "price": 45.0,
-        "stock": 25,
-        "transactions": [25]
-    }
-]
+import json
+import os
+
+
+FILENAME = "inventory.json"
+
+
+def load_inventory():
+    if not os.path.exists(FILENAME):
+        print("inventory.json not found. Starting with an empty inventory.")
+        return []
+
+    print("inventory.json found.")
+    with open(FILENAME, "r", encoding="utf-8") as file:
+        inventory = json.load(file)
+
+    if not isinstance(inventory, list):
+        raise ValueError("inventory.json must contain a list of products.")
+
+    print("Inventory loaded successfully.")
+    return inventory
 
 
 def display_all(inventory):
-    print("Current Inventory")
-    for product in inventory:
-        print(
-            f"ID: {product['id']} | Name: {product['name']} | "
-            f"Price: ${product['price']:.2f} | Stock: {product['stock']}"
-        )
+    print("\nCurrent Inventory")
+    if not inventory:
+        print("No products in inventory.")
+    else:
+        for product in inventory:
+            print(
+                f"ID: {product['id']} | Name: {product['name']} | "
+                f"Price: ${product['price']:.2f} | Stock: {product['stock']}"
+            )
 
 
 if __name__ == "__main__":
-    display_all(inventory)
+    try:
+        inventory = load_inventory()
+    except (OSError, ValueError) as error:
+        print(f"Could not load inventory: {error}")
+    else:
+        display_all(inventory)
