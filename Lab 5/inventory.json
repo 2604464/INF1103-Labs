@@ -12,9 +12,10 @@
         "id": "P002",
         "name": "Mouse",
         "price": 25.5,
-        "stock": 50,
+        "stock": 60,
         "transactions": [
             40,
+            10,
             10
         ]
     },
