@@ -1,0 +1,38 @@
+UML CLASS DIAGRAM - INF1103 LAB 6
+
++------------------------------------------------+
+|                    Product                     |
++------------------------------------------------+
+| - __product_id: str                             |
+| - __name: str                                   |
+| - __price: float                                |
+| - __stock: int                                  |
++------------------------------------------------+
+| + get_product_id(): str                         |
+| + get_name(): str                               |
+| + get_price(): float                            |
+| + get_stock(): int                              |
+| + update_stock(quantity: int): None             |
+| + display_information(): None                   |
++------------------------------------------------+
+
+                         0..*
+Inventory  -------------------------------> Product
+                         contains
+
++------------------------------------------------+
+|                   Inventory                    |
++------------------------------------------------+
+| - __products: list[Product]                     |
++------------------------------------------------+
+| + add_product(product: Product): None           |
+| + search_product(product_id: str): Product/None |
+| + display_all(): None                           |
+| + get_all_products(): list[Product]             |
++------------------------------------------------+
+
+Relationship:
+- One Inventory object contains zero or more Product objects.
+- Product manages one product's data and stock.
+- Inventory manages the collection of Product objects.
+- The main program handles the menu and JSON loading/saving; it is not a class.

@@ -1,0 +1,40 @@
+digraph UML {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.55", ranksep="0.8", label="INF1103 Lab 6 - UML Class Diagram", labelloc="t", fontsize=18, fontname="Arial"];
+  node [shape=plain, fontname="Arial"];
+  edge [fontname="Arial", fontsize=10, color="#444444"];
+
+  Product [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7">
+      <TR><TD BGCOLOR="#DCE8F7"><B>Product</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">
+        - __product_id: str<BR ALIGN="LEFT"/>
+        - __name: str<BR ALIGN="LEFT"/>
+        - __price: float<BR ALIGN="LEFT"/>
+        - __stock: int
+      </TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">
+        + get_product_id(): str<BR ALIGN="LEFT"/>
+        + get_name(): str<BR ALIGN="LEFT"/>
+        + get_price(): float<BR ALIGN="LEFT"/>
+        + get_stock(): int<BR ALIGN="LEFT"/>
+        + update_stock(quantity: int): None<BR ALIGN="LEFT"/>
+        + display_information(): None
+      </TD></TR>
+    </TABLE>
+  >];
+
+  Inventory [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7">
+      <TR><TD BGCOLOR="#DCE8F7"><B>Inventory</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">- __products: list[Product]</TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">
+        + add_product(product: Product): None<BR ALIGN="LEFT"/>
+        + search_product(product_id: str): Product/None<BR ALIGN="LEFT"/>
+        + display_all(): None<BR ALIGN="LEFT"/>
+        + get_all_products(): list[Product]
+      </TD></TR>
+    </TABLE>
+  >];
+
+  Inventory -> Product [dir=both, arrowtail=diamond, arrowhead=none, taillabel="1", headlabel="0..*", label=" contains ", labeldistance=2.0, labelangle=25];
+}
