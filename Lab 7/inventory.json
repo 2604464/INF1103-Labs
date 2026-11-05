@@ -3,7 +3,7 @@
         "product_id": "P001",
         "name": "Electric Guitar",
         "price": 599.98,
-        "stock": 15,
+        "stock": 67,
         "type": "physical",
         "weight": 4.5
     },
