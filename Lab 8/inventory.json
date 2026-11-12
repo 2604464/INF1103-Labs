@@ -1,0 +1,28 @@
+[
+    {
+        "product_id": "0001",
+        "name": "Penut",
+        "price": 0.69,
+        "stock": 67,
+        "supplier": {
+            "supplier_id": "001",
+            "name": "Nuts",
+            "contact_email": "deesnus@nuts.com"
+        },
+        "type": "physical",
+        "weight": 0.1
+    },
+    {
+        "product_id": "0002",
+        "name": "DigiNuts",
+        "price": 67.0,
+        "stock": 69,
+        "supplier": {
+            "supplier_id": "1000",
+            "name": "DigiDees",
+            "contact_email": "DeesDigiNus@nutty.com"
+        },
+        "type": "digital",
+        "download_size": 6.9
+    }
+]
